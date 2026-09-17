@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* opu — Refined luxury rental design system
+   Deep black, soft cream foreground, restrained crimson accent.
+   Inspired by quiet editorial automotive sites.
+*/
+
+@layer base {
+  :root {
+    /* True automotive black for max contrast */
+    --background: 0 0% 3%;
+    --foreground: 36 24% 96%;
+
+    --card: 0 0% 6%;
+    --card-foreground: 36 24% 96%;
+
+    --popover: 0 0% 6%;
+    --popover-foreground: 36 24% 96%;
+
+    --primary: 36 24% 97%;
+    --primary-foreground: 0 0% 3%;
+    --primary-glow: 36 24% 85%;
+
+    /* Punchier crimson accent */
+    --accent: 358 78% 56%;
+    --accent-foreground: 36 24% 97%;
+    --accent-soft: 358 50% 16%;
+
+    --secondary: 0 0% 8%;
+    --secondary-foreground: 36 24% 96%;
+
+    --muted: 0 0% 9%;
+    --muted-foreground: 36 8% 68%;
+
+    --destructive: 358 70% 52%;
+    --destructive-foreground: 36 18% 95%;
+
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
+    --ring: 358 78% 56%;
+
+    --radius: 0.125rem;
+
+    /* Soft gradients */
+    --gradient-hero: radial-gradient(ellipse 80% 60% at 70% 50%, hsl(358 78% 32% / 0.28) 0%, transparent 70%), linear-gradient(180deg, hsl(0 0% 3%) 0%, hsl(0 0% 1%) 100%);
+    --gradient-fade: linear-gradient(180deg, transparent 0%, hsl(0 0% 3%) 100%);
+    --gradient-card: linear-gradient(160deg, hsl(0 0% 8%) 0%, hsl(0 0% 4%) 100%);
+    --gradient-image-fade: linear-gradient(180deg, transparent 0%, transparent 55%, hsl(0 0% 3% / 0.85) 100%);
+
+    /* Layered shadows for depth */
+    --shadow-soft: 0 1px 0 hsl(36 24% 96% / 0.05) inset;
+    --shadow-elegant: 0 40px 100px -30px hsl(0 0% 0% / 0.9);
+    --shadow-card: 0 20px 60px -20px hsl(0 0% 0% / 0.7), 0 1px 0 hsl(36 24% 96% / 0.04) inset;
+    --shadow-glow-accent: 0 30px 80px -30px hsl(358 78% 56% / 0.35);
+
+    /* Transitions */
+    --transition-smooth: all 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+    --transition-spring: all 0.7s cubic-bezier(0.34, 1.2, 0.64, 1);
+
+    --sidebar-background: 0 0% 7%;
+    --sidebar-foreground: 36 18% 92%;
+    --sidebar-primary: 36 18% 95%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 0 0% 11%;
+    --sidebar-accent-foreground: 36 18% 92%;
+    --sidebar-border: 0 0% 16%;
+    --sidebar-ring: 358 70% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "ss01";
+    font-weight: 300;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-hero { background: var(--gradient-hero); }
+  .bg-gradient-fade { background: var(--gradient-fade); }
+  .bg-gradient-card { background: var(--gradient-card); }
+  .bg-gradient-image-fade { background: var(--gradient-image-fade); }
+
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-elegant { box-shadow: var(--shadow-elegant); }
+  .shadow-card { box-shadow: var(--shadow-card); }
+  .shadow-glow-accent { box-shadow: var(--shadow-glow-accent); }
+
+  .transition-smooth { transition: var(--transition-smooth); }
+  .transition-spring { transition: var(--transition-spring); }
+
+  .text-balance { text-wrap: balance; }
+
+  /* Refined display tracking */
+  .tracking-display {
+    letter-spacing: -0.02em;
+  }
+
+  /* Crimson underline link */
+  .link-underline {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 6px;
+  }
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: hsl(var(--accent));
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .link-underline:hover::after {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+}
